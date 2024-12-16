@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizz/ui/screens/home_screen.dart';
+import 'package:quizz/ui/screens/player_selection_screen.dart';
 import 'package:quizz/ui/screens/quiz_settings_screen.dart';
 
 void main() {
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/home': (context) => const HomeScreen(),
+        '/player-selection': (context) => const PlayerSelectionScreen(),
         '/quiz-settings': (context) => const QuizSettingsScreen(),
       },
       initialRoute: '/home',
