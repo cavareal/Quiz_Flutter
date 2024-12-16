@@ -1,10 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quizz/repositories/quiz_category_repository.dart';
 import 'package:quizz/ui/screens/home_screen.dart';
 import 'package:quizz/ui/screens/player_selection_screen.dart';
 import 'package:quizz/ui/screens/quiz_settings_screen.dart';
 
+import 'blocs/category_cubit.dart';
+
 void main() {
-  runApp(const MyApp());
+
+  // Cubits instantiation
+  final CategoryCubit categoryCubit = CategoryCubit(QuizCategoryRepository());
+
+  categoryCubit.loadCategories();
+
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider<CategoryCubit>(create: (_) => categoryCubit)
+      ],
+      child: const MyApp()
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {

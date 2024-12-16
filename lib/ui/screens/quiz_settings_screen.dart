@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quizz/blocs/category_cubit.dart';
 
 class QuizSettingsScreen extends StatefulWidget {
   const QuizSettingsScreen({super.key});
@@ -15,7 +17,20 @@ class _QuizSettingsScreenState extends State<QuizSettingsScreen> {
       appBar: AppBar(
         title: const Text('Quiz Settings'),
       ),
-      body: const Placeholder()
+      body: BlocBuilder<CategoryCubit, List<String>>(
+          builder: (context, state) {
+            return Expanded(child:
+              ListView.builder(
+                itemCount: state.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(state[index]),
+                  );
+                },
+              )
+            );
+          }
+      )
     );
   }
 }
