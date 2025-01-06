@@ -94,6 +94,9 @@ flutter:
    - family : MajorMono
      fonts :
        - asset: lib/assets/fonts/MajorMonoDisplay-Regular.ttf
+   - family : Limelight
+     fonts :
+       - asset : lib/assets/fonts/Limelight-Regular.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
