@@ -16,22 +16,44 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        // scaffoldBackgroundColor: const Color(0x00162132),
+        fontFamily: 'Roboto', // Change la police globale
+        // textTheme: TextTheme(
+        //   bodyLarge: const TextStyle(fontSize: 18, color: Colors.black),
+        //   bodyMedium: TextStyle(fontSize: 16, color: Colors.grey[600]),
+        //   headlineLarge: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        // ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.white,
+            // shape: RoundedRectangleBorder(
+            //   borderRadius: BorderRadius.circular(18), // Bordure arrondie
+            //   side: BorderSide(
+            //     color: Colors.pinkAccent.withOpacity(0.7), // Couleur de la bordure
+            //     width: 1, // Largeur de la bordure
+            //   ),
+            // ),
+            shadowColor: Colors.pinkAccent.withOpacity(0.9), // Effet de néon (ombre rose)
+            elevation: 0, // Ombre plus prononcée pour le néon
+          ),
+        ),
+        cardTheme: CardTheme(
+          color: const Color(0xFF3d485e), // Fond sombre des cartes en mode dark
+          elevation: 2,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          margin: const EdgeInsets.all(8),
+        ),
+        buttonTheme: const ButtonThemeData(
+          buttonColor: Colors.green, // Couleur des boutons
+          textTheme: ButtonTextTheme.primary,
+        ),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.blue,
+            brightness: Brightness.dark).copyWith(
+          // surface: const Color(0x003d485e),
+        ),
         useMaterial3: true,
       ),
       routes: {

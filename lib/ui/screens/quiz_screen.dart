@@ -108,7 +108,7 @@ class QuizScreenState extends State<QuizScreen> {
                         itemBuilder: (context, index) {
                           return ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: _selectedAnswer == _answers[index] ? Colors.blue : Colors.grey,
+                              backgroundColor: _selectedAnswer == _answers[index] ? Colors.pink : null,
                             ),
                             onPressed: () => _selectAnswer(_answers[index]),
                             child: Text(_answers[index]),
@@ -130,9 +130,9 @@ class QuizScreenState extends State<QuizScreen> {
               ],
             );
           } else if (snapshot.hasError) {
-            return Text('${snapshot.error}');
+            return Center(child:Text('${snapshot.error}'));
           }
-          return const CircularProgressIndicator();
+          return const Center(child: CircularProgressIndicator());
         },
       ),
     );
