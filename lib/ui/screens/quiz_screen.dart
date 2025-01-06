@@ -67,7 +67,6 @@ class QuizScreenState extends State<QuizScreen> {
   final QuizQuestionRepository _quizQuestionRepository = QuizQuestionRepository();
 
   Future<List<QuizQuestion>> getQuestions() {
-    print(context.read<SettingsCubit>().state);
     return _quizQuestionRepository.fetchQuestion(context.read<SettingsCubit>().state);
   }
 

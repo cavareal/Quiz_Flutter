@@ -7,12 +7,14 @@ import '../models/quiz_question.dart';
 
 class QuizQuestionRepository {
 
-  //TODO: Implement the methods to interact with the QuizQuestion model
   Future<List<QuizQuestion>> fetchQuestion(Settings settings) async {
+    final int amount = settings.numberOfQuestions;
+    final int category = settings.category.id;
+    final String difficulty = settings.difficulty;
 
-    // final String url = 'https://opentdb.com/api.php?amount=${settings.numberOfQuestions}&category=${settings.category.id}&difficulty=${settings.difficulty}';
+    final url = 'https://opentdb.com/api.php?amount=$amount&category=$category&difficulty=$difficulty';
 
-    final Response response = await get(Uri.parse('https://opentdb.com/api.php?amount=10&category=22&difficulty=easy'));
+    final Response response = await get(Uri.parse(url));
     if (response.statusCode == 200) {
       final List<QuizQuestion> questions = [];
 
@@ -30,7 +32,4 @@ class QuizQuestionRepository {
       throw Exception('Failed to load questions');
     }
   }
-
-
-
 }
