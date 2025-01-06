@@ -69,7 +69,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       routes: {
-        '/home': (context) => const HomeScreen(),
+        '/home': (context) => HomeScreen(),
         '/player-selection': (context) => const PlayerSelectionScreen(),
         '/quiz-settings': (context) => const QuizSettingsScreen(),
         '/quiz': (context) =>  const QuizScreen(),
