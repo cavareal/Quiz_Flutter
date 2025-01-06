@@ -50,13 +50,13 @@ class QuizScreenState extends State<QuizScreen> {
   void _NextQuestion(int totalQuestions){
     _totalQuestions = totalQuestions;
 
+    cardKey.currentState?.toggleCard();
+
     setState(() {
       _questionIndex++;
       _selectedAnswer = null;
       _answers = [];
     });
-
-    cardKey.currentState?.toggleCard();
 
     if (_questionIndex >= totalQuestions) {
       Navigator.pushReplacement(
