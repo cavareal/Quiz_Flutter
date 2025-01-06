@@ -14,10 +14,14 @@ class QuizScreen extends StatefulWidget {
 class QuizScreenState extends State<QuizScreen> {
   int _questionIndex = 0;
   int _score = 0;
+  int _totalQuestions = 0;
   String? _selectedAnswer;
   List<String> _answers = [];
   late Future<List<QuizQuestion>> _questionsFuture;
 
+  double get progress {
+    return _totalQuestions == 0 ? 0.0 : _questionIndex / _totalQuestions;
+  }
   @override
   void initState() {
     super.initState();
@@ -31,6 +35,8 @@ class QuizScreenState extends State<QuizScreen> {
   }
 
   void _validateAnswer(String correctAnswer, int totalQuestions) {
+
+    _totalQuestions = totalQuestions;
 
     if (_selectedAnswer == correctAnswer) {
       setState(() {
@@ -79,6 +85,12 @@ class QuizScreenState extends State<QuizScreen> {
             }
             return Column(
               children: [
+                LinearProgressIndicator(
+                  value: progress,
+                  minHeight: 10,
+                  backgroundColor: Colors.grey[500],
+                  valueColor: const AlwaysStoppedAnimation<Color>(Colors.pinkAccent),
+                ),
                 Card(
                   margin: const EdgeInsets.all(30),
                   child: Column(
