@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quizz/blocs/settings_cubit.dart';
 import 'package:quizz/models/quiz_question.dart';
 import 'package:quizz/repositories/quiz_question_repository.dart';
 import 'package:quizz/ui/screens/quiz_end_screen.dart';
@@ -67,7 +65,7 @@ class QuizScreenState extends State<QuizScreen> {
   final QuizQuestionRepository _quizQuestionRepository = QuizQuestionRepository();
 
   Future<List<QuizQuestion>> getQuestions() {
-    return _quizQuestionRepository.fetchQuestion(context.read<SettingsCubit>().state);
+    return _quizQuestionRepository.fetchQuestion();
   }
 
   @override
@@ -99,10 +97,10 @@ class QuizScreenState extends State<QuizScreen> {
                       ListTile(
                         title: Text(
                           question.category,
-                          style: const TextStyle(fontSize: 20),
+                          style: TextStyle(fontSize: 20),
                         ),
                         subtitle: Text(
-                          "${question.type.toString().split('.').last} - ${question.difficulty.toString().split('.').last}",
+                          question.type.toString().split('.').last + " - " + question.difficulty.toString().split('.').last,
                           style: TextStyle(color: Colors.black.withOpacity(0.6)),
                         ),
                       ),

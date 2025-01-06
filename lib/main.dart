@@ -33,13 +33,11 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // scaffoldBackgroundColor: const Color(0x00162132),
         fontFamily: 'Roboto', // Change la police globale
         // textTheme: TextTheme(
         //   bodyLarge: const TextStyle(fontSize: 18, color: Colors.black),
@@ -49,13 +47,6 @@ class MyApp extends StatelessWidget {
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             foregroundColor: Colors.white,
-            // shape: RoundedRectangleBorder(
-            //   borderRadius: BorderRadius.circular(18), // Bordure arrondie
-            //   side: BorderSide(
-            //     color: Colors.pinkAccent.withOpacity(0.7), // Couleur de la bordure
-            //     width: 1, // Largeur de la bordure
-            //   ),
-            // ),
             shadowColor: Colors.pinkAccent.withOpacity(0.9), // Effet de néon (ombre rose)
             elevation: 0, // Ombre plus prononcée pour le néon
           ),
@@ -74,9 +65,7 @@ class MyApp extends StatelessWidget {
         ),
         colorScheme: ColorScheme.fromSeed(
             seedColor: Colors.blue,
-            brightness: Brightness.dark).copyWith(
-          // surface: const Color(0x003d485e),
-        ),
+            brightness: Brightness.dark),
         useMaterial3: true,
       ),
       routes: {
