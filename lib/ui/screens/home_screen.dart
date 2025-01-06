@@ -12,15 +12,9 @@ class HomeScreen extends StatelessWidget {
               const Text('Home Screen'),
               ElevatedButton(
                   onPressed:() {
-                    Navigator.of(context).pushNamed('/quiz-settings');
+                    Navigator.of(context).pushNamed('/player-selection');
                   },
                   child: const Text('Go to Quiz Settings')
-              ),
-              ElevatedButton(
-                  onPressed:(){
-                    Navigator.of(context).pushNamed('/quiz');
-                  },
-                  child: const Text('Go to Quiz')
               )
             ]
         ),
