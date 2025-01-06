@@ -1,16 +1,17 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quizz/models/categories.dart';
 import '../models/settings.dart';
 
 class SettingsCubit extends Cubit<Settings> {
   SettingsCubit() : super(
       Settings(
-          category: 'General Knowledge',
+          category: Categories(name: 'General Knowledge', id: 9),
           numberOfQuestions: 15,
           difficulty: 'easy'
       )
   );
 
-  void setCategory(String category) {
+  void setCategory(Categories category) {
     emit(
         Settings(
             category: category,

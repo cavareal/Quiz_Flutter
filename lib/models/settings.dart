@@ -1,5 +1,7 @@
+import 'package:quizz/models/categories.dart';
+
 class Settings {
-  final String category;
+  final Categories category;
   final int numberOfQuestions;
   final String difficulty;
 

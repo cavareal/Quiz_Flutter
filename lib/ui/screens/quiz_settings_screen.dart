@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizz/blocs/category_cubit.dart';
 import 'package:quizz/blocs/settings_cubit.dart';
+import 'package:quizz/models/categories.dart';
 import 'package:quizz/ui/components/dropdown_selector.dart';
 
 import '../../models/settings.dart';
@@ -37,12 +38,14 @@ class _QuizSettingsScreenState extends State<QuizSettingsScreen> {
 
                 // CATEGORY
                 const Text('Choose a category:'),
-                BlocBuilder<CategoryCubit, List<String>>(
+                BlocBuilder<CategoryCubit, List<Categories>>(
                   builder: (context, state) {
                     return DropdownSelector(
-                      items: state,
+                      items: state.map((category) => category.name).toList(),
                       onChanged: (String value) {
-                        context.read<SettingsCubit>().setCategory(value);
+                        state.where((category) => category.name == value).forEach((category) {
+                          context.read<SettingsCubit>().setCategory(category);
+                        });
                       }
                     );
                   }

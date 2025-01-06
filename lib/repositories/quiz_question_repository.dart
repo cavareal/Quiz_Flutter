@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart';
+import 'package:quizz/models/settings.dart';
 
 import '../models/quiz_question.dart';
 
@@ -7,7 +8,10 @@ import '../models/quiz_question.dart';
 class QuizQuestionRepository {
 
   //TODO: Implement the methods to interact with the QuizQuestion model
-  Future<List<QuizQuestion>> fetchQuestion() async {
+  Future<List<QuizQuestion>> fetchQuestion(Settings settings) async {
+
+    // final String url = 'https://opentdb.com/api.php?amount=${settings.numberOfQuestions}&category=${settings.category.id}&difficulty=${settings.difficulty}';
+
     final Response response = await get(Uri.parse('https://opentdb.com/api.php?amount=10&category=22&difficulty=easy'));
     if (response.statusCode == 200) {
       final List<QuizQuestion> questions = [];

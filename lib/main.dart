@@ -7,8 +7,6 @@ import 'package:quizz/ui/screens/home_screen.dart';
 import 'package:quizz/ui/screens/player_selection_screen.dart';
 import 'package:quizz/ui/screens/quiz_screen.dart';
 import 'package:quizz/ui/screens/quiz_settings_screen.dart';
-import 'package:quizz/ui/screens/quiz_screen.dart';
-
 import 'blocs/category_cubit.dart';
 
 void main() {
@@ -85,7 +83,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const HomeScreen(),
         '/player-selection': (context) => const PlayerSelectionScreen(),
         '/quiz-settings': (context) => const QuizSettingsScreen(),
-        '/quiz': (context) =>  QuizScreen(),
+        '/quiz': (context) =>  const QuizScreen(),
       },
       initialRoute: '/home',
     );

@@ -1,13 +1,14 @@
 import 'dart:convert';
 import 'package:http/http.dart';
+import 'package:quizz/models/categories.dart';
 
 class QuizCategoryRepository {
 
-  Future<List<String>> fetchCategories() async {
+  Future<List<Categories>> fetchCategories() async {
     final Response response = await get(Uri.parse('https://opentdb.com/api_category.php'));
 
     if (response.statusCode == 200) {
-      final List<String> categories = [];
+      final List<Categories> categories = [];
 
       final Map<String, dynamic> json = jsonDecode(response.body);
 
@@ -17,7 +18,7 @@ class QuizCategoryRepository {
 
         // Transform each trivia_category into a String object
         for (Map<String, dynamic> triviaCategory in triviaCategories) {
-          categories.add(triviaCategory["name"]);
+          categories.add(Categories(name: triviaCategory["name"], id: triviaCategory["id"]));
         }
       }
       return categories;
