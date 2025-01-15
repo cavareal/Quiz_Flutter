@@ -42,6 +42,7 @@ class _PlayerSelectionScreenState extends State<PlayerSelectionScreen> {
                     child: Row(children: <Widget>[
                       Expanded(
                         child: TextFormField(
+                          onFieldSubmitted: (value) {submitPlayer(context);},
                           decoration: InputDecoration(
                             fillColor: const Color(0xFF3d485e),
                             labelText: 'Add a player',
@@ -67,12 +68,7 @@ class _PlayerSelectionScreenState extends State<PlayerSelectionScreen> {
                           iconColor: WidgetStateProperty.all(const Color(0xFF3d485e)),
                         ),
                         onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            context.read<PlayersCubit>().addPlayer(
-                                Players(name: _textFieldController.text)
-                            );
-                            _textFieldController.clear();
-                          }
+                           submitPlayer(context);
                         },
                         icon: const Icon(Icons.add)
                       )
@@ -174,5 +170,14 @@ class _PlayerSelectionScreenState extends State<PlayerSelectionScreen> {
         ]);
       })
     );
+  }
+
+  void submitPlayer(BuildContext context) {
+    if (_formKey.currentState!.validate()) {
+     context.read<PlayersCubit>().addPlayer(
+         Players(name: _textFieldController.text)
+     );
+      _textFieldController.clear();
+    }
   }
 }
