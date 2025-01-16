@@ -104,7 +104,8 @@ class _PlayerSelectionScreenState extends State<PlayerSelectionScreen> {
                               ),
                               IconButton(
                                 style: ButtonStyle(
-                                  backgroundColor: WidgetStateProperty.all(Colors.pinkAccent),
+                                  backgroundColor: WidgetStateProperty.all(const Color(0xFFF26BFE)),
+                                  iconColor: WidgetStateProperty.all(Colors.white),
                                 ),
                                 icon: const Icon(Icons.remove),
                                 onPressed: () {
@@ -129,7 +130,7 @@ class _PlayerSelectionScreenState extends State<PlayerSelectionScreen> {
                 ElevatedButton(
                   style: ButtonStyle(
                     shadowColor: WidgetStateProperty.all(Colors.black),
-                    backgroundColor: WidgetStateProperty.all(Colors.pinkAccent),
+                    backgroundColor: WidgetStateProperty.all(const Color(0xFFF26BFE)),
                   ),
                   onPressed: () {
                     if (state.length < 2) {
@@ -156,7 +157,7 @@ class _PlayerSelectionScreenState extends State<PlayerSelectionScreen> {
                   child: Container(
                     padding: const EdgeInsets.all(15),
                     child: const Text(
-                      'Start Quiz',
+                      'Quiz Settings',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.white,
