@@ -1,17 +1,17 @@
 # Quizz_Flutter
 
+## version de Flutter/Dart
 
-### Convention de nommage
+Flutter 3.24.5
+Dart 3.5.4
 
-**snake_case** : (ex ‘home_screen.dart’)
-- noms de fichier
+## Fonctionnalités de l’application
 
-**UpperCamelCase** : (ex ‘HomeScreen’)
-- classes
-- constructions
-- typeDef
+1. Choix du jeu (pour l'instant il n'y a qu'un seul de jeu de disponible : le quizz)
+2. Rentrer les joueurs
+3. Choix de la catégorie et du nombre de questions 
+4. Répondre aux questions et voir la réponse à cette question
 
-**lowerCamelCase** : (ex: ‘toJson’)
-- méthodes
-- virables
-- constantes 
+## API
+
+https://opentdb.com/
