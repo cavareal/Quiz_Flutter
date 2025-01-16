@@ -232,14 +232,20 @@ class QuizScreenState extends State<QuizScreen> {
                 content: const Text('Error when loading questions'),
                 actions: <Widget>[
                   TextButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                              super.widget));
+                    },
+                    child: const Text('Retry'),
+                  ),
+                  TextButton(
                       onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (BuildContext context) => super.widget));
+                        Navigator.pushNamed(context, "/home");
                       },
-                      child: const Text('Retry')
-                  )
+                      child: const Text('Go back to home'))
                 ]);
           }
           return const Center(child: CircularProgressIndicator());
