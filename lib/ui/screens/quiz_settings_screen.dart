@@ -7,7 +7,6 @@ import 'package:quizz/ui/components/dropdown_selector.dart';
 
 import '../../models/settings.dart';
 
-// TODO: Get the list of categories from a state
 const List<String> difficulties = ["easy", "medium", "hard"];
 
 class QuizSettingsScreen extends StatefulWidget {
@@ -34,6 +33,7 @@ class _QuizSettingsScreenState extends State<QuizSettingsScreen> {
           return Form(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
 
                 // CATEGORY
@@ -79,12 +79,14 @@ class _QuizSettingsScreenState extends State<QuizSettingsScreen> {
                     Text(_maxNumberOfQuestions.toString())
                   ]
                 ),
-
                 ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/quiz');
                   },
-                  child: const Text('Start Quiz'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.pink
+                  ),
+                  child: const Text('Start Quiz')
                 )
               ],
             )
