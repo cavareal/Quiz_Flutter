@@ -19,6 +19,7 @@ class QuizScreenState extends State<QuizScreen> {
   int _score = 0;
   int _totalQuestions = 0;
   String? _selectedAnswer;
+  bool endQuiz = false;
   List<String> _answers = [];
   late Future<List<QuizQuestion>> _questionsFuture;
   GlobalKey<FlipCardState> cardKey = GlobalKey<FlipCardState>();
@@ -53,12 +54,16 @@ class QuizScreenState extends State<QuizScreen> {
     cardKey.currentState?.toggleCard();
 
     setState(() {
-      _questionIndex++;
+      if(_questionIndex == (_totalQuestions - 1)){
+        endQuiz = true;
+      }else {
+        _questionIndex++;
+      }
       _selectedAnswer = null;
       _answers = [];
     });
 
-    if (_questionIndex >= totalQuestions) {
+    if (endQuiz) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
