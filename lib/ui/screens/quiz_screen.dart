@@ -47,7 +47,7 @@ class QuizScreenState extends State<QuizScreen> {
     }
   }
 
-  void _NextQuestion(int totalQuestions){
+  void _nextQuestion(int totalQuestions){
     _totalQuestions = totalQuestions;
 
     cardKey.currentState?.toggleCard();
@@ -98,7 +98,7 @@ class QuizScreenState extends State<QuizScreen> {
                   value: progress,
                   minHeight: 10,
                   // backgroundColor: Colors.grey[500],
-                  valueColor: const AlwaysStoppedAnimation<Color>(Colors.pinkAccent),
+                  valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFFF26BFE)),
                 ), FlipCard(
                   // fill: Fill.fillBack, // Fill the back side of the card to make in the same size as the front.
                   direction: FlipDirection.HORIZONTAL,
@@ -118,10 +118,10 @@ class QuizScreenState extends State<QuizScreen> {
                         ListTile(
                           title: Text(
                             question.category,
-                            style: TextStyle(fontSize: 20),
+                            style: const TextStyle(fontSize: 20),
                           ),
                           subtitle: Text(
-                            question.type.toString().split('.').last + " - " + question.difficulty.toString().split('.').last,
+                            "${question.type.toString().split('.').last} - ${question.difficulty.toString().split('.').last}",
                             style: TextStyle(color: Colors.white.withOpacity(0.6)),
                           ),
                         ),
@@ -140,16 +140,19 @@ class QuizScreenState extends State<QuizScreen> {
                           itemBuilder: (context, index) {
                             return ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: _selectedAnswer == _answers[index] ? Colors.pink : null,
+                                backgroundColor: _selectedAnswer == _answers[index] ? const Color(0xFFF26BFE): Colors.white,
                               ),
                               onPressed: () => _selectAnswer(_answers[index]),
-                              child: Text(_answers[index]),
+                              child: Text(_answers[index], style: TextStyle(color: _selectedAnswer == _answers[index] ? Colors.white : Colors.black)),
                             );
                           },
                         ),
                         Padding (
                           padding: const EdgeInsets.only(bottom: 10.0),
                           child: ElevatedButton(
+                            // style: ElevatedButton.styleFrom(
+                            //   backgroundColor: const Color(0xFFF26BFE)
+                            // ),
                             onPressed: () {
                               _validateAnswer(question.correctAnswer);
                               cardKey.currentState?.toggleCard();
@@ -192,7 +195,7 @@ class QuizScreenState extends State<QuizScreen> {
                             return ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 backgroundColor:_answers[index] == question.correctAnswer ?
-                                Colors.green : (_selectedAnswer == _answers[index] ? Colors.pink : null),// Default background when no answer is selected
+                                Colors.green : (_selectedAnswer == _answers[index] ? const Color(0xFFF26BFE) : null),// Default background when no answer is selected
                               ),
                               onPressed: ()  => () ,
                               child: Text(_answers[index]),
@@ -208,7 +211,7 @@ class QuizScreenState extends State<QuizScreen> {
                               ),
                               child: IconButton(
                                   icon: const Icon(Icons.double_arrow, color: Colors.white),
-                                  onPressed: () => _NextQuestion(snapshot.data!.length)
+                                  onPressed: () => _nextQuestion(snapshot.data!.length)
                               ),
                             )
                         ),
