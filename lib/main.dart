@@ -59,10 +59,6 @@ class MyApp extends StatelessWidget {
           ),
           margin: const EdgeInsets.all(8),
         ),
-        buttonTheme: const ButtonThemeData(
-          buttonColor: Colors.green, // Couleur des boutons
-          textTheme: ButtonTextTheme.primary,
-        ),
         colorScheme: ColorScheme.fromSeed(
             seedColor: Colors.blue,
             brightness: Brightness.dark),
