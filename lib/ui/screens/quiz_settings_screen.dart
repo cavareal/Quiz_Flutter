@@ -31,7 +31,7 @@ class _QuizSettingsScreenState extends State<QuizSettingsScreen> {
       body: BlocBuilder<SettingsCubit, Settings>(
         builder: (context, state) {
           return Container(
-            margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 40),
+            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 120),
             padding: const EdgeInsets.all(15),
             decoration: BoxDecoration(
               color: const Color(0xFF3d485e),
@@ -45,7 +45,7 @@ class _QuizSettingsScreenState extends State<QuizSettingsScreen> {
               child: Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
 
                     // CATEGORY
