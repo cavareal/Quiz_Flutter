@@ -31,7 +31,16 @@ class _QuizSettingsScreenState extends State<QuizSettingsScreen> {
       body: BlocBuilder<SettingsCubit, Settings>(
         builder: (context, state) {
           return Container(
-            margin: const EdgeInsets.all(15),
+            margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 40),
+            padding: const EdgeInsets.all(15),
+            decoration: BoxDecoration(
+              color: const Color(0xFF3d485e),
+              border: Border.all(
+                color: Colors.white,
+                width: 5,
+              ),
+              borderRadius: BorderRadius.circular(30),
+            ),
             child: Form(
               child: Expanded(
                 child: Column(
@@ -43,10 +52,9 @@ class _QuizSettingsScreenState extends State<QuizSettingsScreen> {
                     Container(
                       padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF3d485e),
+                        color: const Color(0xFF162132),
                         border: Border.all(
-                          color: Colors.white,
-                          width: 5,
+                          style: BorderStyle.none,
                         ),
                         borderRadius: BorderRadius.circular(30),
                       ),
@@ -82,10 +90,9 @@ class _QuizSettingsScreenState extends State<QuizSettingsScreen> {
                     Container(
                       padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF3d485e),
+                        color: const Color(0xFF162132),
                         border: Border.all(
-                          color: Colors.white,
-                          width: 5,
+                          style: BorderStyle.none,
                         ),
                         borderRadius: BorderRadius.circular(30),
                       ),
@@ -115,17 +122,22 @@ class _QuizSettingsScreenState extends State<QuizSettingsScreen> {
                     Container(
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF3d485e),
+                        color: const Color(0xFF162132),
                         border: Border.all(
-                          color: Colors.white,
-                          width: 5,
+                          style: BorderStyle.none,
                         ),
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text('Select a number of questions:'),
+                          const Text(
+                            'Number of questions:',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -143,6 +155,13 @@ class _QuizSettingsScreenState extends State<QuizSettingsScreen> {
                               Text(_maxNumberOfQuestions.toString())
                             ]
                           ),
+                          Text(
+                            state.numberOfQuestions.toString(),
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                            ),
+                          )
                         ],
                       ),
                     ),
