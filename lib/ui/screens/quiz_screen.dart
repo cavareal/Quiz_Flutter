@@ -227,7 +227,20 @@ class QuizScreenState extends State<QuizScreen> {
               ],
             );
           } else if (snapshot.hasError) {
-            return Center(child:Text('${snapshot.error}'));
+            return AlertDialog(
+                title: const Text('Erreur'),
+                content: const Text('Erreur lors du chargements des questions'),
+                actions: <Widget>[
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) => super.widget));
+                      },
+                      child: const Text('Recommencer')
+                  )
+                ]);
           }
           return const Center(child: CircularProgressIndicator());
         },
