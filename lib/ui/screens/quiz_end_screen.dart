@@ -1,6 +1,5 @@
 
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class QuizEndScreen extends StatelessWidget {
@@ -8,7 +7,7 @@ class QuizEndScreen extends StatelessWidget {
   final int score;
   final int totalQuestions;
 
-  QuizEndScreen({
+  const QuizEndScreen({super.key,
     required this.score,
     required this.totalQuestions,
   });
@@ -17,7 +16,7 @@ class QuizEndScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quiz End'),
+        title: const Text('Quiz End'),
       ),
       body: Center(
         child: Column(
@@ -25,11 +24,11 @@ class QuizEndScreen extends StatelessWidget {
           children: <Widget>[
             Text(
               'Your Score: $score / $totalQuestions',
-              style: TextStyle(fontSize: 24),
+              style: const TextStyle(fontSize: 24),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
-              child: Text('Restart Quiz'),
+              child: const Text('Restart Quiz'),
               onPressed:(){
                 Navigator.of(context).pushNamed('/home');
               },
