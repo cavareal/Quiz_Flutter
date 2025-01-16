@@ -228,8 +228,8 @@ class QuizScreenState extends State<QuizScreen> {
             );
           } else if (snapshot.hasError) {
             return AlertDialog(
-                title: const Text('Erreur'),
-                content: const Text('Erreur lors du chargements des questions'),
+                title: const Text('Error'),
+                content: const Text('Error when loading questions'),
                 actions: <Widget>[
                   TextButton(
                       onPressed: () {
@@ -238,7 +238,7 @@ class QuizScreenState extends State<QuizScreen> {
                             MaterialPageRoute(
                                 builder: (BuildContext context) => super.widget));
                       },
-                      child: const Text('Recommencer')
+                      child: const Text('Retry')
                   )
                 ]);
           }
