@@ -23,7 +23,9 @@ class _DropdownSelectorState extends State<DropdownSelector> {
   @override
   Widget build(BuildContext context) {
     return DropdownButton(
+      isExpanded: true,
       value: _selectedItem,
+      underline: const SizedBox.shrink(),
       items: widget.items.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,

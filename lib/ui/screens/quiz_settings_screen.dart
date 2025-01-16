@@ -30,65 +30,145 @@ class _QuizSettingsScreenState extends State<QuizSettingsScreen> {
       ),
       body: BlocBuilder<SettingsCubit, Settings>(
         builder: (context, state) {
-          return Form(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-
-                // CATEGORY
-                const Text('Choose a category:'),
-                BlocBuilder<CategoryCubit, List<Categories>>(
-                  builder: (context, state) {
-                    return DropdownSelector(
-                      items: state.map((category) => category.name).toList(),
-                      onChanged: (String value) {
-                        state.where((category) => category.name == value).forEach((category) {
-                          context.read<SettingsCubit>().setCategory(category);
-                        });
-                      }
-                    );
-                  }
-                ),
-
-                // DIFFICULTY
-                const Text('Choose a difficulty:'),
-                DropdownSelector(
-                  items: difficulties,
-                  onChanged: (String? value) {
-                    context.read<SettingsCubit>().setDifficulty(value!);
-                  },
-                ),
-
-                // NUMBER OF QUESTIONS
-                const Text('Select a number of questions:'),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+          return Container(
+            margin: const EdgeInsets.all(15),
+            child: Form(
+              child: Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(_minNumberOfQuestions.toString()),
-                    Slider(
-                      value: state.numberOfQuestions.toDouble(),
-                      min: _minNumberOfQuestions.toDouble(),
-                      max: _maxNumberOfQuestions.toDouble(),
-                      divisions: ((_maxNumberOfQuestions - _minNumberOfQuestions) / _stepNumberOfQuestions).round(),
-                      label: state.numberOfQuestions.round().toString(),
-                      onChanged: (double value) {
-                        context.read<SettingsCubit>().setNumberOfQuestions(value.round());
-                      }
+
+                    // CATEGORY
+                    Container(
+                      padding: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF3d485e),
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 5,
+                        ),
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: ListTile(
+                        title: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              'Category:',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                            BlocBuilder<CategoryCubit, List<Categories>>(
+                              builder: (context, state) {
+                                return DropdownSelector(
+                                  items: state.map((category) => category.name).toList(),
+                                  onChanged: (String value) {
+                                    state.where((category) => category.name == value).forEach((category) {
+                                      context.read<SettingsCubit>().setCategory(category);
+                                    });
+                                  }
+                                );
+                              }
+                            ),
+                          ],
+                        ),
+                      )
                     ),
-                    Text(_maxNumberOfQuestions.toString())
-                  ]
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/quiz');
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.pink
-                  ),
-                  child: const Text('Start Quiz')
+
+                    // DIFFICULTY
+                    Container(
+                      padding: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF3d485e),
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 5,
+                        ),
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: ListTile(
+                        title: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              'Difficulty:',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                            DropdownSelector(
+                              items: difficulties,
+                              onChanged: (String? value) {
+                                context.read<SettingsCubit>().setDifficulty(value!);
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    // NUMBER OF QUESTIONS
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF3d485e),
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 5,
+                        ),
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text('Select a number of questions:'),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(_minNumberOfQuestions.toString()),
+                              Slider(
+                                value: state.numberOfQuestions.toDouble(),
+                                min: _minNumberOfQuestions.toDouble(),
+                                max: _maxNumberOfQuestions.toDouble(),
+                                divisions: ((_maxNumberOfQuestions - _minNumberOfQuestions) / _stepNumberOfQuestions).round(),
+                                label: state.numberOfQuestions.round().toString(),
+                                onChanged: (double value) {
+                                  context.read<SettingsCubit>().setNumberOfQuestions(value.round());
+                                }
+                              ),
+                              Text(_maxNumberOfQuestions.toString())
+                            ]
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // START QUIZ BUTTON
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStateProperty.all(const Color(0xFFF26BFE)),
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/quiz');
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(15),
+                        child: const Text(
+                          'Start Quiz',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                          ),
+                        )
+                      ),
+                    )
+                  ],
                 )
-              ],
+              )
             )
           );
         }
