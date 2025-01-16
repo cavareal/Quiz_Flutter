@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizz/blocs/players_cubit.dart';
 import 'package:quizz/blocs/settings_cubit.dart';
@@ -18,16 +19,22 @@ void main() {
 
   categoryCubit.loadCategories();
 
-  runApp(
-    MultiBlocProvider(
-      providers: [
-        BlocProvider<CategoryCubit>(create: (_) => categoryCubit),
-        BlocProvider<SettingsCubit>(create: (_) => settingsCubit),
-        BlocProvider<PlayersCubit>(create: (_) => playersCubit),
-      ],
-      child: const MyApp()
-    )
-  );
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]).then((_) {
+    runApp(
+      MultiBlocProvider(
+        providers: [
+          BlocProvider<CategoryCubit>(create: (_) => categoryCubit),
+          BlocProvider<SettingsCubit>(create: (_) => settingsCubit),
+          BlocProvider<PlayersCubit>(create: (_) => playersCubit),
+        ],
+        child: const MyApp()
+      )
+    );
+  });
 }
 
 class MyApp extends StatelessWidget {
