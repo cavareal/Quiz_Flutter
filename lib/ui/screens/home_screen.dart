@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../blocs/game_cubit.dart';
 import '../../models/game.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -91,6 +93,7 @@ class HomeScreen extends StatelessWidget {
                               child: ListTile(
                                 title: Text(games[index].name, style: const TextStyle(fontSize: 20)),
                                 onTap: () {
+                                  context.read<GameCubit>().setLastPlayedGame(games[index]);
                                   if(games[index].name == games[0].name){
                                     Navigator.of(context).pushNamed('/player-selection');
                                   }

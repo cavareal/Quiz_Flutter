@@ -3,8 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizz/blocs/players_cubit.dart';
 import 'package:quizz/blocs/settings_cubit.dart';
+import 'package:quizz/models/game.dart';
 import 'package:quizz/repositories/quiz_category_repository.dart';
 import 'package:quizz/ui/screens/home_screen.dart';
+import 'package:quizz/ui/screens/party_quiz.dart';
 import 'package:quizz/ui/screens/player_selection_screen.dart';
 import 'package:quizz/ui/screens/quiz_screen.dart';
 import 'package:quizz/ui/screens/quiz_settings_screen.dart';
@@ -14,12 +16,15 @@ import 'package:flutter/widgets.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
+import 'blocs/game_cubit.dart';
+
 void main() {
 
   // Cubits instantiation
   final CategoryCubit categoryCubit = CategoryCubit(QuizCategoryRepository());
   final SettingsCubit settingsCubit = SettingsCubit();
   final PlayersCubit playersCubit = PlayersCubit();
+  final GameCubit gameCubit = GameCubit();
 
   categoryCubit.loadCategories();
 
@@ -34,6 +39,7 @@ void main() {
           BlocProvider<CategoryCubit>(create: (_) => categoryCubit),
           BlocProvider<SettingsCubit>(create: (_) => settingsCubit),
           BlocProvider<PlayersCubit>(create: (_) => playersCubit),
+          BlocProvider<GameCubit>(create: (_) => gameCubit),
         ],
         child: const MyApp()
       )
@@ -80,6 +86,7 @@ class MyApp extends StatelessWidget {
         '/player-selection': (context) => const PlayerSelectionScreen(),
         '/quiz-settings': (context) => const QuizSettingsScreen(),
         '/quiz': (context) =>  const QuizScreen(),
+        '/quiz-party': (context) => QuestionListPage(),
       },
       initialRoute: '/home',
     );

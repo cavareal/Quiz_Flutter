@@ -161,7 +161,7 @@ class _PlayerSelectionScreenState extends State<PlayerSelectionScreen> {
                   child: Container(
                     padding: const EdgeInsets.all(10),
                     child: const Text(
-                      'Quiz Settings',
+                      'Go',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.white,
