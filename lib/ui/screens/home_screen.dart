@@ -8,6 +8,7 @@ class HomeScreen extends StatelessWidget {
 
   final List<Game> games = [
     Game(name: "General Quiz", logoLetter: "Q"),
+    Game(name: "Party", logoImage: AssetImage('lib/assets/logo_party.png')),
     Game(name: "... En préparation ", logoIcon: Icons.engineering),
   ];
 
@@ -79,11 +80,21 @@ class HomeScreen extends StatelessWidget {
                               )
                               ),
                             ],
+                            if (games[index].logoImage != null)...[
+                              Image(
+                                image: games[index].logoImage!,
+                                width: 70,
+                                height: 70,
+                              )
+                            ],
                             Expanded(
                               child: ListTile(
                                 title: Text(games[index].name, style: const TextStyle(fontSize: 20)),
                                 onTap: () {
                                   if(games[index].name == games[0].name){
+                                    Navigator.of(context).pushNamed('/player-selection');
+                                  }
+                                  if(games[index].name == games[1].name){
                                     Navigator.of(context).pushNamed('/player-selection');
                                   }
                                 },
