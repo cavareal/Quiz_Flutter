@@ -62,16 +62,20 @@ class _PlayerSelectionScreenState extends State<PlayerSelectionScreen> {
                           },
                         )
                       ),
-                      IconButton(
-                        style: ButtonStyle(
-                          backgroundColor: WidgetStateProperty.all(Colors.white),
-                          iconColor: WidgetStateProperty.all(const Color(0xFF3d485e)),
+                      Padding
+                        (padding:  const EdgeInsets.only(right: 7.0),
+                        child:
+                        IconButton(
+                            style: ButtonStyle(
+                              backgroundColor: WidgetStateProperty.all(Colors.white),
+                              iconColor: WidgetStateProperty.all(const Color(0xFF3d485e)),
+                            ),
+                            onPressed: () {
+                              submitPlayer(context);
+                            },
+                            icon: const Icon(Icons.add)
                         ),
-                        onPressed: () {
-                           submitPlayer(context);
-                        },
-                        icon: const Icon(Icons.add)
-                      )
+                      ),
                     ]),
                   )
                 ),
