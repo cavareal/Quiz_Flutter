@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quizz/blocs/game_cubit.dart';
 import 'package:quizz/blocs/players_cubit.dart';
+import 'package:quizz/models/players.dart';
 
 import '../../models/players.dart';
 
@@ -156,7 +158,11 @@ class _PlayerSelectionScreenState extends State<PlayerSelectionScreen> {
                       );
                       return;
                     }
-                    Navigator.of(context).pushNamed('/quiz-settings');
+                    if (context.read<GameCubit>().getLastPlayedGame().name == "General Quiz") {
+                      Navigator.of(context).pushNamed('/quiz-settings');
+                    } else {
+                      Navigator.of(context).pushNamed('/quiz-party');
+                    }
                   },
                   child: Container(
                     padding: const EdgeInsets.all(10),

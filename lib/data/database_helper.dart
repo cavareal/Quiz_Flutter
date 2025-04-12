@@ -28,6 +28,7 @@ class DatabaseHelper {
         await db.execute('''
           CREATE TABLE questions (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
+            category TEXT,
             text TEXT
           )
         ''');
@@ -43,6 +44,9 @@ class DatabaseHelper {
 
   Future<void> insertQuestion(PartyQuestion question) async {
     final database = await db;
+    final directory = await getApplicationDocumentsDirectory();
+    final path = join(directory.path, 'questions.db');
+    print('Database path: $path');
     await database.insert('questions', question.toMap());
   }
 }

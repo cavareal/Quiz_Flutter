@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizz/models/quiz_question.dart';
+import 'package:quizz/models/settings.dart';
 import 'package:quizz/repositories/quiz_question_repository.dart';
 import 'package:quizz/ui/screens/quiz_end_screen.dart';
 import 'package:flip_card/flip_card.dart';
@@ -80,7 +81,7 @@ class QuizScreenState extends State<QuizScreen> {
   final QuizQuestionRepository _quizQuestionRepository = QuizQuestionRepository();
 
   Future<List<QuizQuestion>> getQuestions() {
-    return _quizQuestionRepository.fetchQuestion(context.read<SettingsCubit>().state);
+    return _quizQuestionRepository.fetchQuestion(context.read<SettingsCubit>().state as Settings);
   }
 
   @override
