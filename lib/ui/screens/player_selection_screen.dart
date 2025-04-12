@@ -28,12 +28,12 @@ class _PlayerSelectionScreenState extends State<PlayerSelectionScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  margin: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.all(15),
                   decoration: BoxDecoration(
                     color: const Color(0xFF3d485e),
                     border: Border.all(
                       color: Colors.white,
-                      width: 5,
+                      width: 3,
                     ),
                     borderRadius: BorderRadius.circular(30),
                   ),
@@ -97,7 +97,7 @@ class _PlayerSelectionScreenState extends State<PlayerSelectionScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
-                                padding: const EdgeInsets.all(20),
+                                padding: const EdgeInsets.all(15),
                                 child: Text(
                                   state[index].name,
                                   style: const TextStyle(
@@ -159,7 +159,7 @@ class _PlayerSelectionScreenState extends State<PlayerSelectionScreen> {
                     Navigator.of(context).pushNamed('/quiz-settings');
                   },
                   child: Container(
-                    padding: const EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(10),
                     child: const Text(
                       'Quiz Settings',
                       style: TextStyle(
