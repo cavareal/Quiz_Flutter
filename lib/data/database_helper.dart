@@ -44,9 +44,16 @@ class DatabaseHelper {
 
   Future<void> insertQuestion(PartyQuestion question) async {
     final database = await db;
-    final directory = await getApplicationDocumentsDirectory();
-    final path = join(directory.path, 'questions.db');
-    print('Database path: $path');
     await database.insert('questions', question.toMap());
+  }
+
+  Future<void> deleteQuestion(int id) async {
+    final database = await db;
+    await database.delete('questions', where: 'id = ?', whereArgs: [id]);
+  }
+
+  Future<void> updateQuestion(PartyQuestion question) async {
+    final database = await db;
+    await database.update('questions', question.toMap(), where: 'id = ?', whereArgs: [question.id]);
   }
 }

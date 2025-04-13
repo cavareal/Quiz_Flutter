@@ -4,7 +4,6 @@ import 'package:quizz/blocs/game_cubit.dart';
 import 'package:quizz/blocs/players_cubit.dart';
 import 'package:quizz/models/players.dart';
 
-import '../../models/players.dart';
 
 class PlayerSelectionScreen extends StatefulWidget {
   const PlayerSelectionScreen({super.key});
